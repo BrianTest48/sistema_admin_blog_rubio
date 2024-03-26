@@ -10,6 +10,9 @@
                     <div class="form-layout form-layout-1">
                         <div class="row ">
                             <div class="col-lg-12">
+                                <p class="font-weight-bold" style="background-color: yellow;">Recuerde que las imagenes deben tener las siguientes dimensiones : 525 * 518px</p>
+                            </div><!-- col-4 -->
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <label class="form-control-label">Imagen: <span class="tx-danger">*</span></label>
                                     <input type="file" class="form-control" name="acer_image" id="acer_image" >

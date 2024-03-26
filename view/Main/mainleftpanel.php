@@ -13,6 +13,12 @@
                 <span class="menu-item-label">Portada</span>
             </div>
         </a>
+        <a href="../Tag/" class="br-menu-link menus">
+            <div class="br-menu-item">
+                <i class="menu-item-icon icon ion-document-text tx-24"></i>
+                <span class="menu-item-label">Tag</span>
+            </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
         <a href="../Post/" class="br-menu-link menus">
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-document-text tx-24"></i>

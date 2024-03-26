@@ -58,17 +58,17 @@
             $datos = $articulo->get_articulo_id($_POST["art_id"]);
             if (empty($_POST["art_id"])) {
                 if (is_array($datos) && count($datos) == 0) {
-                    $articulo->insert_articulo($_POST["art_titulo"], $_POST["art_ext"], $_POST["contenido"], $nombre_imagen);
+                    $articulo->insert_articulo($_POST["art_titulo"], $_POST["art_ext"], $_POST["contenido"], $_POST["art_tag"], $nombre_imagen);
                     move_uploaded_file($_FILES['art_image']['tmp_name'], $ruta_archivo);
                 }
             } else {
                 if (!empty($_FILES['art_image']['name'])) {
                     // Si se proporciona una nueva imagen, actualizarla junto con el artículo
-                    $articulo->update_articulo($_POST["art_id"], $_POST["art_titulo"], $_POST["art_ext"], $_POST["contenido"], $nombre_imagen);
+                    $articulo->update_articulo($_POST["art_id"], $_POST["art_titulo"], $_POST["art_ext"], $_POST["contenido"], $_POST["art_tag"], $nombre_imagen);
                     move_uploaded_file($_FILES['art_image']['tmp_name'], $ruta_archivo);
                 } else {
                     // Si no se proporciona una nueva imagen, actualizar solo los otros campos del artículo
-                    $articulo->update_articulo_sin_img($_POST["art_id"], $_POST["art_titulo"], $_POST["art_ext"], $_POST["contenido"]);
+                    $articulo->update_articulo_sin_img($_POST["art_id"], $_POST["art_titulo"], $_POST["art_ext"], $_POST["contenido"],$_POST["art_tag"]);
                 }
             }
         
@@ -83,6 +83,7 @@
                     $output["extracto"] = $row["extracto"];
                     $output["fecha"] = $row["fecha"];
                     $output["texto"] = $row["texto"];
+                    $output["tag"] = $row["tag"];
                     $output["thumb"] = $row["thumb"];
                 }
                 echo json_encode($output);

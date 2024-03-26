@@ -17,6 +17,12 @@
                             </div><!-- col-4 -->
                             <div class="col-lg-12">
                                 <div class="form-group">
+                                    <label class="form-control-label">Tag: <span class="tx-danger">*</span></label>
+                                    <select class="form-control select2" name="art_tag" id="art_tag" data-placeholder="Seleccione" style="width: 100%" required></select>
+                                </div>
+                            </div><!-- col-4 -->
+                            <div class="col-lg-12">
+                                <div class="form-group">
                                     <label class="form-control-label">Extracto : <span class="tx-danger">*</span></label>
                                     <input class="form-control" type="text" name="art_ext" id="art_ext" placeholder="Ingrese Extracto" required>
                                 </div>

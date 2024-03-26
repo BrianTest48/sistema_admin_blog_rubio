@@ -10,20 +10,21 @@
             return $resultado=$sql->fetchAll();
         }
 
-        public function insert_articulo($titulo, $extracto, $texto, $thumb) {
+        public function insert_articulo($titulo, $extracto, $texto, $tag, $thumb) {
            
             $conectar = parent::conexion();
             parent::set_names();
     
             // Preparar la consulta SQL para insertar un nuevo artículo
-            $sql = "INSERT INTO articulos (titulo, extracto, texto, thumb) VALUES (?, ?, ?, ?)";
+            $sql = "INSERT INTO articulos (titulo, extracto, texto, tag, thumb) VALUES (?, ?, ?, ?, ?)";
             $stmt = $conectar->prepare($sql);
     
             // Enlazar los parámetros con los valores
             $stmt->bindParam(1, $titulo);
             $stmt->bindParam(2, $extracto);
             $stmt->bindParam(3, $texto);
-            $stmt->bindParam(4, $thumb);
+            $stmt->bindParam(4, $tag);
+            $stmt->bindParam(5, $thumb);
     
             // Ejecutar la consulta
             $stmt->execute();
@@ -35,20 +36,21 @@
            
         }
 
-        public function update_articulo($id, $titulo, $extracto, $texto, $thumb) {
+        public function update_articulo($id, $titulo, $extracto, $texto, $tag, $thumb) {
             $conectar = parent::conexion();
             parent::set_names();
             
             // Preparar la consulta SQL para actualizar el artículo con el ID proporcionado
-            $sql = "UPDATE articulos SET titulo = ?, extracto = ?, texto = ?, thumb = ? WHERE id = ?";
+            $sql = "UPDATE articulos SET titulo = ?, extracto = ?, texto = ?, tag = ? ,thumb = ? WHERE id = ?";
             $stmt = $conectar->prepare($sql);
             
             // Enlazar los parámetros con los valores
             $stmt->bindParam(1, $titulo);
             $stmt->bindParam(2, $extracto);
             $stmt->bindParam(3, $texto);
-            $stmt->bindParam(4, $thumb);
-            $stmt->bindParam(5, $id);
+            $stmt->bindParam(4, $tag);
+            $stmt->bindParam(5, $thumb);
+            $stmt->bindParam(6, $id);
             
             // Ejecutar la consulta
             $stmt->execute();
@@ -56,19 +58,20 @@
             return $resultado=$stmt->fetchAll();
         }
 
-        public function update_articulo_sin_img($id, $titulo, $extracto, $texto) {
+        public function update_articulo_sin_img($id, $titulo, $extracto, $texto, $tag) {
             $conectar = parent::conexion();
             parent::set_names();
             
             // Preparar la consulta SQL para actualizar el artículo con el ID proporcionado
-            $sql = "UPDATE articulos SET titulo = ?, extracto = ?, texto = ? WHERE id = ?";
+            $sql = "UPDATE articulos SET titulo = ?, extracto = ?, texto = ?, tag = ?  WHERE id = ?";
             $stmt = $conectar->prepare($sql);
             
             // Enlazar los parámetros con los valores
             $stmt->bindParam(1, $titulo);
             $stmt->bindParam(2, $extracto);
             $stmt->bindParam(3, $texto);
-            $stmt->bindParam(4, $id);
+            $stmt->bindParam(4, $tag);
+            $stmt->bindParam(5, $id);
             
             // Ejecutar la consulta
             $stmt->execute();
