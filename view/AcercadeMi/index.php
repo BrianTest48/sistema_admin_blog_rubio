@@ -5,6 +5,7 @@
 
 <head>
     <?php require_once("../Main/mainhead.php"); ?>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.snow.css" rel="stylesheet">
     <title>Administrador - Acerca de Mi</title>
 </head>
 
@@ -59,6 +60,7 @@
     require_once("./modal.php");
     require_once("../Main/mainjs.php");
     ?>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.js"></script>
     <script src="./acercademi.js" type="text/javascript"></script>
 
 </body>

@@ -1,4 +1,19 @@
 
+const toolbarOptions = [
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+    ["bold", "italic", "underline"], // toggled buttons
+    ["image"],
+    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+  ];
+  
+  const quill = new Quill("#editor", {
+    modules: {
+      toolbar: toolbarOptions,
+    },
+    theme: "snow",
+  });
+
+
 var tabla ;
 var datos_empresa;
 
@@ -58,6 +73,8 @@ function init(){
 function guardaryeditar(e){
     e.preventDefault();
     var formData = new FormData($("#empresa_form")[0]);
+    var contenidoHTML = quill.root.innerHTML;
+    formData.append("acer_mensaje", contenidoHTML);
 
     $.ajax({
         url: "../../controller/acercademicontrolador.php?op=guardaryeditar",
@@ -66,7 +83,7 @@ function guardaryeditar(e){
         contentType: false,
         processData: false,
         success: function(datos){
-            console.log(datos);
+            //console.log(datos);
             $('#empresa_form')[0].reset();
             $("#modalmantenimiento").modal('hide');
             $('#empresa_data').DataTable().ajax.reload();
@@ -82,15 +99,16 @@ function guardaryeditar(e){
 
 
 function editar(emp_id){
-    console.log(emp_id);
+    //console.log(emp_id);
     
     //$('#mdltitulo').html('Editar Registro');
     $.post("../../controller/acercademicontrolador.php?op=mostrar",{acer_id: emp_id},function(data){
         data = JSON.parse(data);
-        console.log(data);
+        //console.log(data);
         $('#acer_id').val(data.id);
-        $('#acer_mensaje').val(data.mensaje);
-        //$('#art_cuerpo').val(data.texto);
+        //$('#acer_mensaje').val(data.mensaje);
+        quill.root.innerHTML = data.mensaje;
+
     });
 
     $('#modalmantenimiento').modal('show');

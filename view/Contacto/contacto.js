@@ -1,4 +1,19 @@
 
+const toolbarOptions = [
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+    ["bold", "italic", "underline"], // toggled buttons
+    ["image"],
+    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+  ];
+  
+const quill = new Quill("#editor", {
+    modules: {
+        toolbar: toolbarOptions,
+    },
+    theme: "snow",
+});
+
+
 var tabla ;
 var datos_empresa;
 
@@ -71,6 +86,8 @@ function init(){
 function guardaryeditar(e){
     e.preventDefault();
     var formData = new FormData($("#empresa_form")[0]);
+    var contenidoHTML = quill.root.innerHTML;
+    formData.append("cont_mensaje", contenidoHTML);
 
     $.ajax({
         url: "../../controller/contactocontrolador.php?op=guardaryeditar",
@@ -79,7 +96,7 @@ function guardaryeditar(e){
         contentType: false,
         processData: false,
         success: function(datos){
-            console.log(datos);
+            //console.log(datos);
             $('#empresa_form')[0].reset();
             $("#modalmantenimiento").modal('hide');
             $('#empresa_data').DataTable().ajax.reload();
@@ -100,9 +117,10 @@ function editar(emp_id){
     //$('#mdltitulo').html('Editar Registro');
     $.post("../../controller/contactocontrolador.php?op=mostrar",{cont_id: emp_id},function(data){
         data = JSON.parse(data);
-        console.log(data);
+        //console.log(data);
         $('#cont_id').val(data.id);
-        $('#cont_mensaje').val(data.mensaje);
+        //$('#cont_mensaje').val(data.mensaje);
+        quill.root.innerHTML = data.mensaje;
         //$('#art_cuerpo').val(data.texto);
     });
 

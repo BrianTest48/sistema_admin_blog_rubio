@@ -66,11 +66,11 @@ function guardaryeditar(e) {
 }
 
 $(document).ready(function () {
-    $("#art_tag").select2({
-        placeholder: "Seleccione",
-        dropdownParent: $("#modalmantenimiento"),
-        minimumResultsForSearch: Infinity,
-    });
+  $("#art_tag").select2({
+    placeholder: "Seleccione",
+    dropdownParent: $("#modalmantenimiento"),
+    minimumResultsForSearch: Infinity,
+  });
 
   tabla = $("#empresa_data")
     .dataTable({
@@ -157,7 +157,7 @@ function editar(emp_id) {
       $("#art_id").val(data.id);
       $("#art_titulo").val(data.titulo);
       $("#art_ext").val(data.extracto);
-      $('#art_tag').val(data.tag).trigger('change');
+      $("#art_tag").val(data.tag).trigger("change");
       quill.root.innerHTML = data.texto;
       //console.log('Contenido recuperado:', data.texto);
     }
@@ -206,7 +206,7 @@ $(document).on("click", "#btnnuevo", function () {
   $("#empresa_form")[0].reset();
   $("#art_id").val("");
   $("#modalmantenimiento").modal("show");
-  $('#art_tag').select2("val", "0");
+  $("#art_tag").select2("val", "0");
 
   quill.root.innerHTML = "";
 });

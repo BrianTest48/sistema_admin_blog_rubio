@@ -21,9 +21,16 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label class="form-control-label">Texto: <span class="tx-danger">*</span></label>
+                                    <div id="editor">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label class="form-control-label">Texto: <span class="tx-danger">*</span></label>
                                     <textarea class="form-control" name="acer_mensaje" id="acer_mensaje"  cols="30" rows="10" required></textarea>
                                 </div>
-                            </div><!-- col-4 -->
+                            </div> -->
                         </div><!-- row -->
                     </div>
                     <div class="modal-footer" id="modal-footer">

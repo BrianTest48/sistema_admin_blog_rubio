@@ -34,7 +34,7 @@
                                     <div id="editor">
                                     </div>
                                 </div>
-                            </div><!-- col-4 -->
+                            </div><!-- col-12 -->
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label class="form-control-label">Miniatura: <span class="tx-danger">*</span></label>
