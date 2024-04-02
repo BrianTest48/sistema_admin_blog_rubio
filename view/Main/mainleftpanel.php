@@ -49,6 +49,12 @@
                 <span class="menu-item-label">Mensajes</span>
             </div><!-- menu-item -->
         </a><!-- br-menu-link -->
+        <a href="../Cards/" class="br-menu-link menus">
+            <div class="br-menu-item">
+                <i class="menu-item-icon icon ion-document-text tx-24"></i>
+                <span class="menu-item-label">Banner</span>
+            </div><!-- menu-item -->
+        </a><!-- br-menu-link -->
     </div>
     <br>
     

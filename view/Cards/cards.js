@@ -23,7 +23,7 @@ $(document).ready(function(){
             }
         ],
         "ajax":{
-            url: '../../controller/portadacontrolador.php?op=listar_tabla',
+            url: '../../controller/bannercontrolador.php?op=listar_tabla',
             type : "get",
             dataType : "json",
             error: function(e){
@@ -74,7 +74,7 @@ function guardaryeditar(e){
     var formData = new FormData($("#empresa_form")[0]);
 
     $.ajax({
-        url: "../../controller/portadacontrolador.php?op=guardaryeditar",
+        url: "../../controller/bannercontrolador.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -99,7 +99,7 @@ function editar(emp_id){
     console.log(emp_id);
     
     //$('#mdltitulo').html('Editar Registro');
-    $.post("../../controller/portadacontrolador.php?op=mostrar",{ptd_id: emp_id},function(data){
+    $.post("../../controller/bannercontrolador.php?op=mostrar",{ptd_id: emp_id},function(data){
         data = JSON.parse(data);
         console.log(data);
         $('#ptd_id').val(data.id);
@@ -123,7 +123,7 @@ function eliminar(emp_id){
     }).then((result) => {
         if (result.isConfirmed) {
 
-            $.post("../../controller/portadacontrolador.php?op=eliminar",{id: emp_id},function (data) {
+            $.post("../../controller/bannercontrolador.php?op=eliminar",{id: emp_id},function (data) {
                 //console.log(data);
                 $('#empresa_data').DataTable().ajax.reload();	
                 if(data == 1){
